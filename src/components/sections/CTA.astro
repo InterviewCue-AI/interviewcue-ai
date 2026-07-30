@@ -1,0 +1,36 @@
+---
+import { site } from '../../lib/site';
+import Button from '../ui/Button.astro';
+
+const isWaitlistCta = site.cta.href === '/waitlist/';
+const defaultTitle = isWaitlistCta
+  ? 'Join the InterviewCue waitlist for early access.'
+  : 'Bring InterviewCue into your next technical interview practice loop.';
+const defaultDescription = isWaitlistCta
+  ? 'Get updates when InterviewCue AI opens early access for software interview preparation, mock interviews, and real-time interview cues.'
+  : 'Open the product to practice coding, system design, behavioral, and product interview workflows built for software careers.';
+const defaultEyebrow = isWaitlistCta ? 'Early access' : 'Product access';
+
+const {
+  title = defaultTitle,
+  description = defaultDescription,
+  eyebrow = defaultEyebrow,
+} = Astro.props;
+---
+
+<section class="bg-slate-50 py-24">
+  <div class="container">
+    <div class="overflow-hidden rounded-[2rem] bg-slate-950 px-8 py-12 text-white shadow-2xl shadow-slate-950/15 sm:px-12 lg:flex lg:items-center lg:justify-between lg:gap-10" data-reveal>
+      <div class="max-w-3xl">
+        <p class="text-sm font-black uppercase tracking-widest text-teal-300">{eyebrow}</p>
+        <h2 class="mt-4 text-4xl font-black tracking-tight sm:text-5xl">{title}</h2>
+        <p class="mt-5 text-lg leading-8 text-slate-300">{description}</p>
+      </div>
+      <div class="mt-8 flex shrink-0 lg:mt-0">
+        <Button href={site.cta.href} trackingLabel={`bottom_cta_${site.cta.trackingKey}`} trackingSection="bottom_cta">
+          {site.cta.label}
+        </Button>
+      </div>
+    </div>
+  </div>
+</section>

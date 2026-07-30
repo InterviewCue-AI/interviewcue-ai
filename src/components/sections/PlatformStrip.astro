@@ -1,0 +1,17 @@
+---
+const platforms = ['Zoom', 'Google Meet', 'Teams', 'LeetCode', 'HackerRank', 'CoderPad', 'CodeSignal', 'Notion'];
+const loop = [...platforms, ...platforms];
+---
+
+<section class="border-y border-slate-200 bg-white">
+  <div class="container flex flex-col gap-4 overflow-hidden py-6 lg:flex-row lg:items-center" data-reveal>
+    <p class="shrink-0 text-sm font-bold uppercase tracking-widest text-slate-500">Built for interview workflows across</p>
+    <div class="relative flex h-10 min-w-0 flex-1 items-center overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
+      <div class="flex w-max items-center gap-2 [animation:marquee_24s_linear_infinite]">
+      {loop.map((platform) => (
+        <span class="inline-flex h-9 shrink-0 items-center rounded-full border border-slate-200 bg-slate-50 px-4 text-sm font-semibold leading-none text-slate-700 whitespace-nowrap">{platform}</span>
+      ))}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,311 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../lib/site';
+import { isWaitlistAppsScriptConfigured, waitlistForm } from '../lib/waitlist';
+---
+
+<BaseLayout title="Contact" description="Contact the InterviewCue team about partnerships, product access, and feedback.">
+  <section class="section contact-page">
+    <div class="container contact-grid">
+      <div class="prose">
+        <p class="eyebrow">Contact</p>
+        <h1>Talk to the InterviewCue team.</h1>
+        <p>
+          Send product questions, partnership notes, feedback, or privacy requests. We will use your email address to reply.
+        </p>
+        <div class="email-actions" aria-label="Official contact email">
+          <a
+            class="gmail-link"
+            href={site.contact.gmailComposeUrl}
+            target="_blank"
+            rel="noopener"
+            data-ga-event="contact_email_click"
+            data-ga-category="lead"
+            data-ga-label="gmail_support_email"
+            data-ga-section="contact_page"
+            data-ga-component="email_cta"
+          >
+            Email us in Gmail
+          </a>
+          <a
+            class="mailto-link"
+            href={`mailto:${site.contact.email}`}
+            data-ga-event="contact_email_click"
+            data-ga-category="lead"
+            data-ga-label="mailto_support_email"
+            data-ga-section="contact_page"
+            data-ga-component="email_cta"
+          >
+            {site.contact.email}
+          </a>
+        </div>
+      </div>
+      <form
+        class="card contact-form"
+        name="contact"
+        data-ga-event="contact_submit"
+        data-ga-category="lead"
+        data-ga-label="contact_form"
+        data-ga-section="contact_page"
+        data-ga-component="contact_form"
+        data-apps-script-endpoint={waitlistForm.appsScriptEndpoint}
+        data-configured={String(isWaitlistAppsScriptConfigured)}
+      >
+        <label>
+          Work email
+          <input type="email" name="email" placeholder="you@example.com" required />
+        </label>
+        <label>
+          Topic
+          <input type="text" name="topic" placeholder="Partnership, product question, privacy request..." required />
+        </label>
+        <label>
+          Message
+          <textarea name="message" placeholder="How can we help?" required></textarea>
+        </label>
+        <input type="hidden" name="sourcePage" value="/contact/" />
+        <button type="submit" data-form-submit>
+          {isWaitlistAppsScriptConfigured ? 'Send message' : 'Contact form opening soon'}
+        </button>
+        <p class="form-status" data-form-status aria-live="polite">
+          {
+            isWaitlistAppsScriptConfigured
+              ? 'Your message will be sent to the InterviewCue team.'
+              : 'The contact form is being connected.'
+          }
+        </p>
+      </form>
+    </div>
+  </section>
+  <script>
+    const form = document.querySelector('form[name="contact"]');
+    const status = document.querySelector('[data-form-status]');
+    const submitButton = document.querySelector('[data-form-submit]');
+    let submitTimeout;
+    let activeCallbackName;
+
+    const setStatus = (message, state) => {
+      if (!status) return;
+      status.textContent = message;
+      status.setAttribute('data-state', state);
+    };
+
+    const setSubmitEnabled = (enabled) => {
+      if (submitButton instanceof HTMLButtonElement) {
+        submitButton.disabled = !enabled;
+      }
+    };
+
+    const cleanupJsonp = (script, callbackName) => {
+      window.clearTimeout(submitTimeout);
+      script?.remove();
+      if (callbackName && window[callbackName]) {
+        delete window[callbackName];
+      }
+      activeCallbackName = undefined;
+    };
+
+    form?.addEventListener('submit', (event) => {
+      if (!(form instanceof HTMLFormElement)) return;
+
+      event.preventDefault();
+
+      if (form.dataset.configured !== 'true') {
+        setStatus('Please check back soon. The contact form is being connected.', 'error');
+        return;
+      }
+
+      const endpoint = form.dataset.appsScriptEndpoint;
+      if (!endpoint) {
+        setStatus('Please check back soon. The contact form is being connected.', 'error');
+        return;
+      }
+
+      if (activeCallbackName) {
+        return;
+      }
+
+      const formData = new FormData(form);
+      const topic = String(formData.get('topic') || '').trim();
+      const message = String(formData.get('message') || '').trim();
+      const callbackName = `interviewCueContact${Date.now()}`;
+      const params = new URLSearchParams({
+        callback: callbackName,
+        email: String(formData.get('email') || ''),
+        role: topic ? `Contact: ${topic}` : 'Contact request',
+        interviewGoal: message,
+        sourcePage: String(formData.get('sourcePage') || '/contact/'),
+        pageLocation: window.location.href,
+        userAgent: window.navigator.userAgent,
+      });
+      const script = document.createElement('script');
+
+      activeCallbackName = callbackName;
+      setSubmitEnabled(false);
+      setStatus('Sending your message...', 'pending');
+
+      window[callbackName] = (payload) => {
+        cleanupJsonp(script, callbackName);
+        setSubmitEnabled(true);
+
+        if (payload?.ok) {
+          form.reset();
+          setStatus('Thanks. Your message was sent.', 'success');
+          return;
+        }
+
+        setStatus('We could not save your message. Please try again.', 'error');
+      };
+
+      script.src = `${endpoint}?${params.toString()}`;
+      script.async = true;
+      script.onerror = () => {
+        cleanupJsonp(script, callbackName);
+        setSubmitEnabled(true);
+        setStatus('We could not reach the contact service. Please try again.', 'error');
+      };
+
+      submitTimeout = window.setTimeout(() => {
+        cleanupJsonp(script, callbackName);
+        setSubmitEnabled(true);
+        setStatus('We could not confirm the message submission. Please try again.', 'error');
+      }, 12000);
+
+      document.body.append(script);
+    });
+  </script>
+</BaseLayout>
+
+<style>
+  .contact-page {
+    min-height: 68vh;
+    display: grid;
+    align-items: center;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 440px;
+    gap: 42px;
+    align-items: start;
+  }
+
+  h1 {
+    max-width: 720px;
+    margin: 0;
+    font-size: clamp(2.1rem, 4.2vw, 3.6rem);
+    line-height: 1.05;
+  }
+
+  .contact-form {
+    display: grid;
+    gap: 14px;
+    padding: 24px;
+  }
+
+  .email-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 24px;
+  }
+
+  .gmail-link,
+  .mailto-link {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    font-weight: 800;
+    padding: 0 15px;
+    text-decoration: none;
+  }
+
+  .gmail-link {
+    background: var(--brand);
+    color: white;
+  }
+
+  .mailto-link {
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--brand);
+  }
+
+  label {
+    display: grid;
+    gap: 7px;
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    padding: 12px;
+  }
+
+  input {
+    min-height: 46px;
+  }
+
+  textarea {
+    min-height: 150px;
+    resize: vertical;
+  }
+
+  button {
+    min-height: 46px;
+    border: 0;
+    border-radius: 7px;
+    background: var(--brand);
+    color: white;
+    font-weight: 800;
+    cursor: pointer;
+  }
+
+  button:disabled {
+    cursor: progress;
+    opacity: 0.72;
+  }
+
+  .form-status {
+    margin: 2px 0 0;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--surface-muted);
+    color: var(--ink);
+    font-size: 0.88rem;
+    font-weight: 720;
+    line-height: 1.45;
+    padding: 10px 12px;
+  }
+
+  .form-status[data-state='pending'] {
+    border-color: rgba(37, 99, 235, 0.24);
+    background: rgba(37, 99, 235, 0.08);
+    color: #1d4ed8;
+  }
+
+  .form-status[data-state='success'] {
+    border-color: rgba(13, 148, 136, 0.26);
+    background: rgba(13, 148, 136, 0.1);
+    color: #0f766e;
+  }
+
+  .form-status[data-state='error'] {
+    border-color: rgba(220, 38, 38, 0.22);
+    background: rgba(220, 38, 38, 0.08);
+    color: #b91c1c;
+  }
+
+  @media (max-width: 860px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

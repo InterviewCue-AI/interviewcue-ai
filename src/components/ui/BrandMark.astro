@@ -1,0 +1,29 @@
+---
+type Props = {
+  tone?: 'light' | 'dark';
+};
+
+const { tone = 'light' } = Astro.props as Props;
+const textClass = tone === 'dark' ? 'text-white' : 'text-slate-950';
+const subTextClass = tone === 'dark' ? 'text-blue-200' : 'text-blue-700';
+const ringClass = tone === 'dark' ? 'ring-white/15' : 'ring-blue-600/20';
+---
+
+<span class={`inline-flex items-center gap-3 ${textClass}`}>
+  <span class={`relative grid h-10 w-10 place-items-center overflow-hidden rounded-2xl bg-gradient-to-br from-blue-500 via-blue-600 to-teal-400 shadow-lg shadow-blue-600/20 ring-1 ${ringClass}`}>
+    <svg class="h-7 w-7" viewBox="0 0 64 64" aria-hidden="true">
+      <path
+        d="M13 16c0-4.4 3.6-8 8-8h22c4.4 0 8 3.6 8 8v23c0 4.4-3.6 8-8 8H31.5L21.4 55c-1.8 1.4-4.4.2-4.4-2.1v-7.4c-2.4-1.4-4-4-4-7V16Z"
+        fill="white"
+        opacity=".96"
+      />
+      <path d="M29 22l-7 7 7 7M38 22l7 7-7 7" fill="none" stroke="#2563eb" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M33.5 20v18" stroke="#14b8a6" stroke-width="4.5" stroke-linecap="round" />
+      <path d="M48 11.5l1.3 3.2 3.2 1.3-3.2 1.3-1.3 3.2-1.3-3.2-3.2-1.3 3.2-1.3 1.3-3.2Z" fill="#5eead4" />
+    </svg>
+  </span>
+  <span class="leading-none">
+    <span class="block text-base font-black tracking-tight sm:text-lg">InterviewCue AI</span>
+    <span class={`mt-1 hidden text-[0.67rem] font-black uppercase tracking-[0.22em] sm:block ${subTextClass}`}>InterviewCue</span>
+  </span>
+</span>

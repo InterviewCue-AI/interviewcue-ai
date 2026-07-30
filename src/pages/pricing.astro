@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../lib/site';
+---
+
+<BaseLayout title="Pricing" description="InterviewCue pricing for AI mock interviews and live interview coaching workflows.">
+  <section class="section">
+    <div class="container prose">
+      <p class="eyebrow">Pricing</p>
+      <h1>Pricing for technical interview coaching.</h1>
+      <p>InterviewCue is now available for software and internet-industry candidates who want live interview support, AI mock interviews, and role-specific preparation workflows.</p>
+      <h2>Planned plan types</h2>
+      <p>We are designing options for candidates who need short-term interview preparation, repeated mock practice, and deeper coaching across coding, system design, behavioral, and product rounds.</p>
+      <p><a href={site.cta.href}>{site.cta.label}</a></p>
+    </div>
+  </section>
+</BaseLayout>

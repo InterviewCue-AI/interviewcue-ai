@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FeatureGrid from '../../components/sections/FeatureGrid.astro';
+import CTA from '../../components/sections/CTA.astro';
+import ImageFrame from '../../components/ui/ImageFrame.astro';
+import { images } from '../../lib/images';
+
+const features = [
+  {
+    title: 'Clarify the problem',
+    description: 'Practice asking the right questions before jumping into implementation or architecture.',
+  },
+  {
+    title: 'Structure the answer',
+    description: 'Use frameworks for coding walkthroughs, system design, debugging, and behavioral stories.',
+  },
+  {
+    title: 'Improve technical signal',
+    description: 'Strengthen complexity analysis, tradeoffs, failure modes, API choices, and product constraints.',
+  },
+];
+---
+
+<BaseLayout
+  title="AI Interview Copilot for Technical Interviews"
+  description="A role-aware AI interview copilot for software engineers, product managers, data teams, and technical candidates."
+>
+  <section class="section page-hero">
+    <div class="container page-grid">
+      <div>
+        <p class="eyebrow">AI Interview Copilot</p>
+        <h1>Practice technical interviews with context, structure, and feedback.</h1>
+        <p>
+          InterviewCue is designed for software career interviews where candidates need to explain reasoning, tradeoffs, implementation details, and leadership stories clearly.
+        </p>
+      </div>
+      <ImageFrame {...images.whiteboard} ratio="wide" />
+    </div>
+  </section>
+  <FeatureGrid
+    eyebrow="How it helps"
+    title="Make technical thinking easier to communicate."
+    description="The copilot is built around preparation and coaching workflows for tech roles."
+    features={features}
+  />
+  <CTA />
+</BaseLayout>
+
+<style>
+  .page-hero {
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .page-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.96fr) minmax(360px, 0.84fr);
+    gap: 40px;
+    align-items: center;
+  }
+
+  h1 {
+    max-width: 860px;
+    margin: 0;
+    font-size: clamp(2.15rem, 4.2vw, 3.7rem);
+    line-height: 1.05;
+  }
+
+  .page-hero p:not(.eyebrow) {
+    max-width: 720px;
+    color: var(--ink-soft);
+    font-size: 1.15rem;
+  }
+
+  @media (max-width: 900px) {
+    .page-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

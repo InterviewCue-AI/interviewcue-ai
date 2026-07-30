@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you reference this implementation, cite the repository and the canonical InterviewCue AI website."
+title: "InterviewCue AI Marketing Site"
+type: software
+authors:
+  - name: "InterviewCue AI"
+repository-code: "https://github.com/InterviewCue-AI/interviewcue-ai"
+url: "https://www.interviewcue.ai"
+license: MIT
+abstract: "Static Astro marketing and content site for InterviewCue AI, including public SEO and GEO implementation references."

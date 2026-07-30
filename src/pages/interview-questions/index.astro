@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTA from '../../components/sections/CTA.astro';
+
+const hubs = [
+  { title: 'Software Engineer', href: '/interview-questions/software-engineer/', copy: 'Coding, system design, debugging, and behavioral questions.' },
+  { title: 'Frontend Engineer', href: '/interview-questions/frontend-engineer/', copy: 'Browser fundamentals, UI architecture, performance, and product thinking.' },
+  { title: 'Backend Engineer', href: '/interview-questions/backend-engineer/', copy: 'APIs, databases, distributed systems, scaling, and reliability.' },
+  { title: 'Product Manager', href: '/interview-questions/product-manager/', copy: 'Product sense, execution, strategy, metrics, and technical collaboration.' },
+  { title: 'Data Engineer', href: '/interview-questions/data-engineer/', copy: 'Pipelines, warehouses, streaming, data quality, and system tradeoffs.' },
+  { title: 'ML Engineer', href: '/interview-questions/machine-learning-engineer/', copy: 'ML systems, modeling choices, evaluation, deployment, and product impact.' },
+];
+---
+
+<BaseLayout
+  title="Technical Interview Questions by Role"
+  description="Explore software and internet-industry interview questions by role, interview type, and hiring loop."
+>
+  <section class="section page-hero">
+    <div class="container">
+      <p class="eyebrow">Interview Questions</p>
+      <h1>Role-specific question hubs for software career interviews.</h1>
+      <p>Explore focused question sets for the technical interviews software and internet-industry candidates actually face: coding, architecture, debugging, product judgment, data systems, ML systems, and behavioral stories.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container grid three">
+      {hubs.map((hub) => (
+        <a
+          class="card hub"
+          href={hub.href}
+          data-ga-event="content_hub_click"
+          data-ga-category="content"
+          data-ga-label={hub.title}
+          data-ga-section="interview_questions_hub"
+          data-ga-component="role_card"
+        >
+          <h2>{hub.title}</h2>
+          <p>{hub.copy}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+  <CTA />
+</BaseLayout>
+
+<style>
+  .page-hero {
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+  }
+
+  h1 {
+    max-width: 860px;
+    margin: 0;
+    font-size: clamp(2.15rem, 4.2vw, 3.7rem);
+    line-height: 1.05;
+  }
+
+  .page-hero p:not(.eyebrow) {
+    max-width: 720px;
+    color: var(--ink-soft);
+    font-size: 1.15rem;
+  }
+
+  .hub {
+    display: block;
+    padding: 24px;
+  }
+
+  .hub:hover {
+    border-color: rgb(23 107 91 / 38%);
+    box-shadow: var(--shadow);
+  }
+
+  .hub h2 {
+    margin: 0 0 10px;
+    font-size: 1.2rem;
+  }
+
+  .hub p {
+    margin: 0;
+    color: var(--ink-soft);
+  }
+</style>

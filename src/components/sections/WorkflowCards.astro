@@ -1,0 +1,35 @@
+---
+const items = [
+  {
+    title: 'Train your copilot',
+    copy: 'Upload resume notes, paste the job description, and choose the role so live guidance sounds specific instead of generic.',
+  },
+  {
+    title: 'Use it during high-pressure moments',
+    copy: 'Get structured talking points for coding, system design, behavioral, and product questions while you stay focused on the conversation.',
+  },
+  {
+    title: 'Improve after the call',
+    copy: 'Review transcripts, scorecards, missed points, speech clarity, and a focused improvement plan for the next interview.',
+  },
+];
+---
+
+<section class="bg-white py-24">
+  <div class="container">
+    <div class="mx-auto max-w-3xl text-center" data-reveal>
+      <p class="text-sm font-black uppercase tracking-widest text-blue-600">How it works</p>
+      <h2 class="mt-4 text-4xl font-black tracking-tight text-slate-950 sm:text-5xl">Before, during, and after every technical interview.</h2>
+      <p class="mt-5 text-lg leading-8 text-slate-600">The paid product story centers on live assistance, with mock interviews and reports supporting the full interview loop.</p>
+    </div>
+    <div class="mt-14 grid gap-5 lg:grid-cols-3">
+      {items.map((item, index) => (
+        <article class="rounded-3xl border border-slate-200 bg-slate-50 p-8 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:bg-white hover:shadow-xl hover:shadow-blue-950/10" data-reveal>
+          <span class="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-600 text-sm font-black text-white">{index + 1}</span>
+          <h3 class="mt-8 text-2xl font-black tracking-tight text-slate-950">{item.title}</h3>
+          <p class="mt-4 leading-7 text-slate-600">{item.copy}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

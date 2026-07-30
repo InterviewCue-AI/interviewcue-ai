@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FeatureGrid from '../../components/sections/FeatureGrid.astro';
+import CTA from '../../components/sections/CTA.astro';
+import ImageFrame from '../../components/ui/ImageFrame.astro';
+import { images } from '../../lib/images';
+
+const features = [
+  {
+    title: 'Role-based interview sets',
+    description: 'Generate sessions for frontend, backend, ML, data, PM, DevOps, QA, and other tech roles.',
+  },
+  {
+    title: 'Hiring-loop feedback',
+    description: 'Review answers across clarity, depth, correctness, structure, and seniority signal.',
+  },
+  {
+    title: 'Follow-up pressure',
+    description: 'Practice follow-up questions that test edge cases, scale, failure modes, and communication.',
+  },
+];
+---
+
+<BaseLayout
+  title="AI Mock Interview for Software and Tech Roles"
+  description="Run AI mock interviews for coding, system design, behavioral, product, and technical role preparation."
+>
+  <section class="section page-hero">
+    <div class="container page-grid">
+      <div>
+        <p class="eyebrow">AI Mock Interview</p>
+        <h1>Rehearse the full technical interview loop before it counts.</h1>
+        <p>
+          Build confidence with realistic prompts and structured feedback across coding, system design, behavioral, and product conversations.
+        </p>
+      </div>
+      <ImageFrame {...images.codingDesk} ratio="wide" />
+    </div>
+  </section>
+  <FeatureGrid
+    eyebrow="Mock practice"
+    title="Train the skills technical interviews actually measure."
+    description="Each mock session is designed to make your reasoning easier to inspect and improve."
+    features={features}
+  />
+  <CTA />
+</BaseLayout>
+
+<style>
+  .page-hero {
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .page-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.96fr) minmax(360px, 0.84fr);
+    gap: 40px;
+    align-items: center;
+  }
+
+  h1 {
+    max-width: 860px;
+    margin: 0;
+    font-size: clamp(2.15rem, 4.2vw, 3.7rem);
+    line-height: 1.05;
+  }
+
+  .page-hero p:not(.eyebrow) {
+    max-width: 720px;
+    color: var(--ink-soft);
+    font-size: 1.15rem;
+  }
+
+  @media (max-width: 900px) {
+    .page-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

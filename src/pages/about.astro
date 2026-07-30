@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../lib/site';
+
+const facts = [
+  {
+    title: 'What InterviewCue means',
+    copy:
+      'InterviewCue is the short brand name for InterviewCue AI. The name points to practical cues: the prompts, structures, and reminders candidates need when interviews become stressful.',
+  },
+  {
+    title: 'Who it is built for',
+    copy:
+      'InterviewCue AI is built for software and internet-industry candidates preparing for coding, system design, behavioral, data, product, QA, DevOps, SRE, and technical leadership interviews.',
+  },
+  {
+    title: 'What the product does',
+    copy:
+      'The product combines ATS resume optimization, role-specific AI mock interviews, real-time interview cues, and post-interview practice feedback.',
+  },
+];
+---
+
+<BaseLayout
+  title="About InterviewCue AI"
+  description="InterviewCue is the short name for InterviewCue AI, an AI interview coach for software candidates preparing resumes, mock interviews, and live technical interview answers."
+>
+  <section class="bg-slate-950 text-white">
+    <div class="container py-16 sm:py-20">
+      <div class="max-w-3xl">
+        <p class="text-sm font-black uppercase tracking-[0.24em] text-blue-200">About InterviewCue AI</p>
+        <h1 class="mt-4 text-4xl font-black tracking-tight sm:text-5xl">InterviewCue is the short name for InterviewCue AI.</h1>
+        <p class="mt-5 text-lg leading-8 text-slate-300">
+          InterviewCue AI is an AI interview coach for software candidates. People may search for InterviewCue, InterviewCue AI, or www.interviewcue.ai; all refer to the same product and brand.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white">
+    <div class="container grid gap-5 py-14 md:grid-cols-3">
+      {facts.map((item) => (
+        <article class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm shadow-slate-200/60">
+          <h2 class="text-lg font-black text-slate-950">{item.title}</h2>
+          <p class="mt-3 text-sm leading-6 text-slate-600">{item.copy}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-slate-50">
+    <div class="container py-14">
+      <div class="max-w-3xl">
+        <h2 class="text-2xl font-black text-slate-950">Brand and contact</h2>
+        <p class="mt-4 leading-7 text-slate-600">
+          The official website is <a class="font-bold text-blue-700" href={site.url}>www.interviewcue.ai</a>. For product, partnership, or support questions, contact <a class="font-bold text-blue-700" href={`mailto:${site.contact.email}`}>{site.contact.email}</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

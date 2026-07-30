@@ -1,0 +1,59 @@
+---
+const outcomes = [
+  {
+    metric: 'Live',
+    label: 'question capture',
+    detail: 'Turns rambling interviewer prompts into a clear question type: coding, system design, behavioral, product, or resume deep dive.',
+  },
+  {
+    metric: 'Resume + JD',
+    label: 'personalization',
+    detail: 'Uses your background and target role to suggest examples, project details, tradeoffs, and role-specific wording.',
+  },
+  {
+    metric: 'After-call',
+    label: 'scorecard',
+    detail: 'Shows missed signals, weak answers, repeated filler words, unclear reasoning, and next-round practice tasks.',
+  },
+];
+
+const painPoints = [
+  'Your mind goes blank when the interviewer asks an unexpected follow-up.',
+  'You know the technical answer, but your explanation sounds unstructured.',
+  'System design questions become messy because you skip requirements and tradeoffs.',
+  'Behavioral answers feel generic because they are not grounded in your real projects.',
+];
+---
+
+<section class="bg-slate-50 py-24">
+  <div class="container grid gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
+    <div data-reveal>
+      <p class="text-sm font-black uppercase tracking-widest text-blue-600">Why candidates pay</p>
+      <h2 class="mt-4 text-4xl font-black tracking-tight text-slate-950 sm:text-5xl">
+        The hardest part is not practicing. It is staying sharp during the real interview.
+      </h2>
+      <p class="mt-5 text-lg leading-8 text-slate-600">
+        InterviewCue is built around the high-pressure moment: understanding the question fast, choosing the right structure, and answering with enough technical depth to pass the bar.
+      </p>
+      <div class="mt-8 grid gap-3">
+        {painPoints.map((item) => (
+          <div class="flex gap-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+            <span class="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-blue-600"></span>
+            <p class="text-sm font-semibold leading-6 text-slate-700">{item}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+    <div class="grid gap-4">
+      {outcomes.map((item) => (
+        <article class="rounded-3xl border border-slate-200 bg-white p-7 shadow-xl shadow-slate-950/5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-950/10" data-reveal>
+          <div class="flex items-baseline gap-3">
+            <strong class="text-3xl font-black tracking-tight text-slate-950">{item.metric}</strong>
+            <span class="text-sm font-black uppercase tracking-widest text-teal-600">{item.label}</span>
+          </div>
+          <p class="mt-4 leading-7 text-slate-600">{item.detail}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

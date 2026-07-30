@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTA from '../../components/sections/CTA.astro';
+
+const criteria = [
+  {
+    title: 'Role coverage',
+    copy: 'Look for focused practice across software engineering, frontend, backend, data, ML, SRE, product, and leadership interviews.',
+  },
+  {
+    title: 'Technical depth',
+    copy: 'A useful mock interview tool should test reasoning, tradeoffs, complexity, failure modes, and communication under follow-up pressure.',
+  },
+  {
+    title: 'Feedback quality',
+    copy: 'Strong feedback identifies unclear structure, shallow tradeoffs, missing examples, weak seniority signals, and repeated filler patterns.',
+  },
+];
+---
+
+<BaseLayout
+  title="AI Mock Interview Tools for Technical Candidates"
+  description="Compare AI mock interview tools for software and internet-industry candidates by role coverage, technical depth, feedback, privacy, and pricing."
+>
+  <section class="section page-hero">
+    <div class="container">
+      <p class="eyebrow">Comparison</p>
+      <h1>AI mock interview tools for technical candidates.</h1>
+      <p>The best AI mock interview tool for software candidates should do more than ask generic behavioral questions. It should help you practice the full technical loop: coding, system design, debugging, product reasoning, behavioral stories, and role-specific follow-ups.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container grid three">
+      {criteria.map((item) => (
+        <article class="card criterion">
+          <h2>{item.title}</h2>
+          <p>{item.copy}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+  <CTA />
+</BaseLayout>
+
+<style>
+  .page-hero {
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+  }
+
+  h1 {
+    max-width: 880px;
+    margin: 0;
+    font-size: clamp(2.15rem, 4.2vw, 3.7rem);
+    line-height: 1.05;
+  }
+
+  .page-hero p:not(.eyebrow) {
+    max-width: 740px;
+    color: var(--ink-soft);
+    font-size: 1.15rem;
+  }
+
+  .criterion {
+    padding: 24px;
+  }
+
+  .criterion h2 {
+    margin: 0 0 10px;
+    font-size: 1.2rem;
+  }
+
+  .criterion p {
+    margin: 0;
+    color: var(--ink-soft);
+  }
+</style>

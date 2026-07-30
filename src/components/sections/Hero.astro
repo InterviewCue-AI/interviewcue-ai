@@ -1,0 +1,92 @@
+---
+import { site } from '../../lib/site';
+import Button from '../ui/Button.astro';
+
+const modes = ['Coding', 'System design', 'Behavioral', 'Product sense'];
+
+const bullets = [
+  'Instant answer structure when you freeze',
+  'Coding and system design hints for live technical rounds',
+  'Personalized by resume, job description, and target role',
+];
+---
+
+<section class="relative overflow-hidden bg-slate-950 text-white">
+  <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.34),transparent_34rem),radial-gradient(circle_at_80%_20%,rgba(20,184,166,0.22),transparent_30rem)]"></div>
+  <div class="absolute -left-24 top-16 h-72 w-72 rounded-full bg-blue-500/20 blur-3xl [animation:aiGlow_8s_ease-in-out_infinite]"></div>
+  <div class="absolute -right-24 top-44 h-80 w-80 rounded-full bg-teal-400/20 blur-3xl [animation:aiGlow_10s_ease-in-out_infinite]"></div>
+  <div class="container relative py-14 sm:py-16 lg:py-18">
+    <div class="mx-auto max-w-5xl text-center" data-reveal>
+      <div class="mb-5 inline-flex rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm font-semibold text-blue-100 backdrop-blur">
+        InterviewCue AI interview coach for software careers
+      </div>
+      <h1 class="mx-auto max-w-4xl text-4xl font-black leading-[0.98] tracking-tight text-white sm:text-5xl lg:text-6xl">
+        InterviewCue AI helps you prepare, practice, and answer technical interviews with structure.
+      </h1>
+      <p class="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
+        InterviewCue AI is built for software candidates who need ATS resume optimization, role-specific AI mock interviews, and real-time interview cues for coding, system design, behavioral, and product rounds.
+      </p>
+      <div class="mx-auto mt-5 grid max-w-2xl gap-2 sm:grid-cols-3">
+        {bullets.map((bullet) => (
+          <div class="rounded-2xl border border-white/10 bg-white/[0.06] px-3 py-3 text-sm font-semibold leading-5 text-slate-200">
+            {bullet}
+          </div>
+        ))}
+      </div>
+      <div class="mt-7 flex flex-wrap justify-center gap-3">
+        <Button href={site.cta.href} trackingLabel={`hero_${site.cta.trackingKey}`} trackingSection="hero">
+          {site.cta.label}
+        </Button>
+        <Button href="/ai-mock-interview/" variant="secondary" trackingLabel="hero_try_mock_interview" trackingSection="hero">
+          Try mock interview
+        </Button>
+      </div>
+    </div>
+
+    <div class="mx-auto mt-9 max-w-5xl rounded-[2rem] border border-white/10 bg-white/10 p-3 shadow-2xl shadow-blue-950/40 backdrop-blur [animation:floatPanel_6s_ease-in-out_infinite]" data-reveal>
+      <div class="overflow-hidden rounded-[1.5rem] bg-slate-900 ring-1 ring-white/10">
+        <div class="flex h-12 items-center gap-2 border-b border-white/10 px-5">
+          <span class="h-3 w-3 rounded-full bg-red-400"></span>
+          <span class="h-3 w-3 rounded-full bg-amber-300"></span>
+          <span class="h-3 w-3 rounded-full bg-emerald-400"></span>
+          <span class="ml-3 text-sm font-semibold text-slate-300">InterviewCue live copilot</span>
+        </div>
+        <div class="grid gap-0 lg:grid-cols-[180px_1fr]">
+          <aside class="hidden border-r border-white/10 bg-slate-950/60 p-5 lg:block">
+            <p class="text-xs font-bold uppercase tracking-widest text-slate-500">Mode</p>
+            <div class="mt-4 grid gap-2">
+              {modes.map((mode, index) => (
+                <span class={`rounded-xl px-3 py-2 text-sm font-semibold ${index === 1 ? 'bg-blue-500/20 text-blue-100' : 'text-slate-400'}`}>{mode}</span>
+              ))}
+            </div>
+          </aside>
+          <div class="p-4 sm:p-6">
+            <div class="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+              <div class="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-transparent via-blue-300/10 to-transparent [animation:scanLine_3.5s_linear_infinite]"></div>
+              <p class="text-xs font-bold uppercase tracking-widest text-blue-300">Detected question</p>
+              <p class="mt-2 text-base font-semibold text-white sm:text-lg">Design a realtime notification service for a global collaboration product.</p>
+            </div>
+            <div class="mt-3 rounded-2xl border border-teal-300/20 bg-teal-400/10 p-4">
+              <p class="text-xs font-bold uppercase tracking-widest text-teal-200">Live answer guidance</p>
+              <ul class="mt-2 grid gap-1 text-sm leading-6 text-slate-200 sm:text-base">
+                <li>1. Clarify delivery guarantees and expected scale.</li>
+                <li>2. Compare fanout-on-write vs fanout-on-read.</li>
+                <li>3. Mention retries, dead-letter queues, and idempotency.</li>
+              </ul>
+            </div>
+            <div class="mt-3 grid gap-3 sm:grid-cols-3">
+              {['Structure 91', 'Depth 84', 'Tradeoffs 79'].map((score) => (
+                <div class="rounded-2xl border border-white/10 bg-white/[0.05] p-4">
+                  <p class="text-sm font-bold text-white">{score}</p>
+                  <div class="mt-3 h-2 rounded-full bg-slate-800">
+                    <div class="h-2 w-4/5 rounded-full bg-blue-500"></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

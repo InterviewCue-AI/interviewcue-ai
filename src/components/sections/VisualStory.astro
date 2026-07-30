@@ -1,0 +1,23 @@
+---
+import ImageFrame from '../ui/ImageFrame.astro';
+import { images } from '../../lib/images';
+---
+
+<section class="bg-white py-24">
+  <div class="container grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+    <div data-reveal>
+      <p class="text-sm font-black uppercase tracking-widest text-blue-600">From prep to review</p>
+      <h2 class="mt-4 text-4xl font-black tracking-tight text-slate-950 sm:text-5xl">A visual system tied to real technical practice.</h2>
+      <p class="mt-5 text-lg leading-8 text-slate-600">
+        Product UI, engineering workspaces, and system-design imagery now use consistent proportions so the page feels intentional instead of patched together.
+      </p>
+    </div>
+    <div class="grid grid-cols-2 gap-4" data-reveal>
+      <ImageFrame {...images.codingDesk} ratio="square" />
+      <ImageFrame {...images.whiteboard} ratio="square" />
+      <div class="col-span-2">
+        <ImageFrame {...images.developerSetup} ratio="wide" />
+      </div>
+    </div>
+  </div>
+</section>

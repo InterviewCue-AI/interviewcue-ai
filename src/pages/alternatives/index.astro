@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTA from '../../components/sections/CTA.astro';
+---
+
+<BaseLayout
+  title="AI Interview Tool Alternatives for Software Candidates"
+  description="Compare AI interview preparation products through the lens of software, product, data, and technical hiring loops."
+>
+  <section class="section page-hero">
+    <div class="container">
+      <p class="eyebrow">Alternatives</p>
+      <h1>Compare AI interview tools through a software-career lens.</h1>
+      <p>Different interview tools solve different problems. These comparisons focus on coding, system design, technical communication, behavioral stories, privacy, and role-specific preparation for software and internet-industry candidates.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container grid two">
+      <a
+        class="card compare"
+        href="/alternatives/final-round-ai/"
+        data-ga-event="comparison_click"
+        data-ga-category="content"
+        data-ga-label="Final Round AI Alternative"
+        data-ga-section="alternatives_index"
+        data-ga-component="comparison_card"
+      >
+        <h2>Final Round AI Alternative</h2>
+        <p>A comparison page focused on technical interview prep, software roles, and ethical coaching workflows.</p>
+      </a>
+      <a
+        class="card compare"
+        href="/alternatives/ai-mock-interview-tools/"
+        data-ga-event="comparison_click"
+        data-ga-category="content"
+        data-ga-label="AI Mock Interview Tools"
+        data-ga-section="alternatives_index"
+        data-ga-component="comparison_card"
+      >
+        <h2>AI Mock Interview Tools</h2>
+        <p>A practical framework for comparing AI mock interview tools by role coverage, feedback quality, privacy, and technical depth.</p>
+      </a>
+    </div>
+  </section>
+  <CTA />
+</BaseLayout>
+
+<style>
+  .page-hero {
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+  }
+
+  h1 {
+    max-width: 860px;
+    margin: 0;
+    font-size: clamp(2.15rem, 4.2vw, 3.7rem);
+    line-height: 1.05;
+  }
+
+  .page-hero p:not(.eyebrow) {
+    max-width: 720px;
+    color: var(--ink-soft);
+    font-size: 1.15rem;
+  }
+
+  .compare {
+    display: block;
+    padding: 24px;
+  }
+
+  .compare h2 {
+    margin: 0 0 10px;
+  }
+
+  .compare p {
+    margin: 0;
+    color: var(--ink-soft);
+  }
+</style>

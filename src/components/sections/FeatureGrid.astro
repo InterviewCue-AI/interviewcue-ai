@@ -1,0 +1,32 @@
+---
+type Feature = {
+  title: string;
+  description: string;
+};
+
+const { eyebrow, title, description, features } = Astro.props as {
+  eyebrow?: string;
+  title: string;
+  description: string;
+  features: Feature[];
+};
+---
+
+<section class="bg-slate-950 py-24 text-white">
+  <div class="container">
+    <div class="max-w-3xl" data-reveal>
+      {eyebrow && <p class="text-sm font-black uppercase tracking-widest text-teal-300">{eyebrow}</p>}
+      <h2 class="mt-4 text-4xl font-black tracking-tight sm:text-5xl">{title}</h2>
+      <p class="mt-5 text-lg leading-8 text-slate-300">{description}</p>
+    </div>
+    <div class="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      {features.map((feature, index) => (
+        <article class="rounded-3xl border border-white/10 bg-white/[0.06] p-7 transition duration-300 hover:-translate-y-1 hover:border-blue-300/40 hover:bg-white/[0.09]" data-reveal>
+          <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-white text-sm font-black text-slate-950">{index + 1}</div>
+          <h3 class="mt-6 text-xl font-black tracking-tight text-white">{feature.title}</h3>
+          <p class="mt-3 leading-7 text-slate-300">{feature.description}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

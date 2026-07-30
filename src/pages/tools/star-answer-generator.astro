@@ -1,0 +1,165 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="STAR Answer Generator for Technical Interviews"
+  description="Draft structured STAR answers for software engineering, product, data, and technical behavioral interviews."
+>
+  <section class="section tool-page">
+    <div class="container tool-grid">
+      <div>
+        <p class="eyebrow">Free tool</p>
+        <h1>STAR Answer Generator for technical candidates.</h1>
+        <p>Turn messy interview notes into a structured Situation, Task, Action, and Result draft for software, product, data, and technical leadership interviews.</p>
+      </div>
+      <form
+        class="card"
+        data-ga-event="tool_submit"
+        data-ga-category="tool"
+        data-ga-label="star_answer_generator"
+        data-ga-section="star_answer_generator"
+        data-ga-component="tool_form"
+      >
+        <label>
+          Situation
+          <textarea name="situation" placeholder="Describe the context" required></textarea>
+        </label>
+        <label>
+          Target competency
+          <input name="competency" placeholder="Ownership, conflict, ambiguity..." />
+        </label>
+        <button type="submit">Generate draft</button>
+        <output class="draft" data-draft aria-live="polite">
+          Add a situation and competency to generate a structured STAR draft.
+        </output>
+      </form>
+    </div>
+  </section>
+  <script>
+    const form = document.querySelector('form[data-ga-label="star_answer_generator"]');
+    const draft = document.querySelector('[data-draft]');
+
+    form?.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      if (!(form instanceof HTMLFormElement) || !(draft instanceof HTMLOutputElement)) return;
+
+      const data = new FormData(form);
+      const situation = String(data.get('situation') || '').trim();
+      const competency = String(data.get('competency') || 'technical judgment').trim();
+
+      if (!situation) {
+        draft.textContent = 'Describe the situation first, then generate a STAR draft.';
+        draft.setAttribute('data-state', 'error');
+        return;
+      }
+
+      draft.removeAttribute('data-state');
+      draft.textContent = [
+        `Competency: ${competency}`,
+        '',
+        `Situation: ${situation}`,
+        '',
+        'Task: Explain the responsibility you owned, the constraint you faced, and why the outcome mattered.',
+        '',
+        'Action: Describe the technical decision, communication step, tradeoff, or leadership move you personally made.',
+        '',
+        'Result: Add a measurable outcome, learning, or business impact. Include numbers, latency, reliability, quality, adoption, or team impact when possible.',
+        '',
+        'Follow-up to prepare: What would you do differently if the same situation happened again?',
+      ].join('\n');
+    });
+  </script>
+</BaseLayout>
+
+<style>
+  .tool-page {
+    min-height: 68vh;
+    display: grid;
+    align-items: center;
+  }
+
+  .tool-grid {
+    display: grid;
+    grid-template-columns: 1fr 430px;
+    gap: 40px;
+    align-items: start;
+  }
+
+  h1 {
+    max-width: 760px;
+    margin: 0;
+    font-size: clamp(2.1rem, 4.2vw, 3.6rem);
+    line-height: 1.05;
+  }
+
+  p:not(.eyebrow) {
+    max-width: 640px;
+    color: var(--ink-soft);
+    font-size: 1.12rem;
+  }
+
+  form {
+    display: grid;
+    gap: 14px;
+    padding: 24px;
+  }
+
+  label {
+    display: grid;
+    gap: 7px;
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    padding: 12px;
+  }
+
+  textarea {
+    min-height: 140px;
+    resize: vertical;
+  }
+
+  button {
+    min-height: 46px;
+    border: 0;
+    border-radius: 7px;
+    background: var(--brand);
+    color: white;
+    font-weight: 800;
+    cursor: pointer;
+  }
+
+  .draft {
+    display: block;
+    min-height: 160px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--surface-muted);
+    color: var(--ink);
+    font-size: 0.92rem;
+    font-weight: 650;
+    line-height: 1.55;
+    padding: 14px;
+    white-space: pre-wrap;
+  }
+
+  .draft[data-state='error'] {
+    border-color: rgba(220, 38, 38, 0.22);
+    background: rgba(220, 38, 38, 0.08);
+    color: #b91c1c;
+  }
+
+  @media (max-width: 860px) {
+    .tool-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

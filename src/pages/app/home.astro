@@ -1,0 +1,28 @@
+---
+import { site } from '../../lib/site';
+
+const targetUrl = site.app.homeUrl;
+const isWaitlistTarget = targetUrl === '/waitlist/' || targetUrl.includes('/waitlist/');
+const pageTitle = isWaitlistTarget ? 'Join the InterviewCue waitlist' : 'Opening InterviewCue app';
+const loadingText = isWaitlistTarget ? 'Opening the InterviewCue waitlist...' : 'Opening InterviewCue app...';
+const linkText = isWaitlistTarget ? 'Continue to the waitlist' : 'Continue to the app';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta http-equiv="refresh" content={`0; url=${targetUrl}`} />
+    <title>{pageTitle}</title>
+    <link rel="canonical" href={targetUrl} />
+  </head>
+  <body>
+    <p>{loadingText}</p>
+    <p><a href={targetUrl}>{linkText}</a></p>
+    <script is:inline define:vars={{ targetUrl }}>
+      window.location.replace(targetUrl);
+    </script>
+  </body>
+</html>

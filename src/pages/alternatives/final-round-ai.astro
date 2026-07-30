@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTA from '../../components/sections/CTA.astro';
+---
+
+<BaseLayout
+  title="Final Round AI Alternative for Software Interview Prep"
+  description="Compare AI interview preparation tools for software engineers and technical candidates."
+>
+  <section class="section page-hero">
+    <div class="container">
+      <p class="eyebrow">Comparison</p>
+      <h1>Final Round AI alternative for software interview preparation.</h1>
+      <p>InterviewCue is built for candidates who want interview preparation centered on software roles: coding explanations, system design tradeoffs, technical behavioral stories, and role-aware mock practice.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container grid three">
+      <article class="card point">
+        <h2>Software-first scope</h2>
+        <p>Prepare for coding, system design, architecture, product sense, and technical behavioral interviews in one focused workflow.</p>
+      </article>
+      <article class="card point">
+        <h2>Role-aware practice</h2>
+        <p>Use prompts and feedback shaped around frontend, backend, data, ML, SRE, product, and leadership interview loops.</p>
+      </article>
+      <article class="card point">
+        <h2>Clearer technical signal</h2>
+        <p>Turn rough answers into structured explanations that show tradeoffs, constraints, ownership, and seniority.</p>
+      </article>
+    </div>
+  </section>
+  <CTA />
+</BaseLayout>
+
+<style>
+  .page-hero {
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+  }
+
+  h1 {
+    max-width: 900px;
+    margin: 0;
+    font-size: clamp(2.15rem, 4.2vw, 3.7rem);
+    line-height: 1.05;
+  }
+
+  .page-hero p:not(.eyebrow) {
+    max-width: 740px;
+    color: var(--ink-soft);
+    font-size: 1.15rem;
+  }
+
+  .point {
+    padding: 24px;
+  }
+
+  .point h2 {
+    margin: 0 0 10px;
+    font-size: 1.2rem;
+  }
+
+  .point p {
+    margin: 0;
+    color: var(--ink-soft);
+  }
+</style>

@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/sections/Hero.astro';
+import FeatureGrid from '../components/sections/FeatureGrid.astro';
+import RoleMatrix from '../components/sections/RoleMatrix.astro';
+import CTA from '../components/sections/CTA.astro';
+import VisualStory from '../components/sections/VisualStory.astro';
+import PlatformStrip from '../components/sections/PlatformStrip.astro';
+import WorkflowCards from '../components/sections/WorkflowCards.astro';
+import ConversionProof from '../components/sections/ConversionProof.astro';
+import HomeFAQ from '../components/sections/HomeFAQ.astro';
+import { organizationSchema, softwareApplicationSchema, websiteSchema } from '../lib/seo';
+
+const features = [
+  {
+    title: 'Live Interview Copilot',
+    description:
+      'When a question lands, the copilot classifies it, surfaces the right answer structure, and gives concise talking points based on your resume and target JD.',
+  },
+  {
+    title: 'Coding interview support',
+    description:
+      'Get help framing brute force vs optimized approaches, complexity, test cases, edge cases, debugging strategy, and code walkthroughs.',
+  },
+  {
+    title: 'System design guidance',
+    description:
+      'Move from vague architecture talk to a clean flow: requirements, scale, APIs, data model, queues, caching, bottlenecks, and failure modes.',
+  },
+  {
+    title: 'Behavioral answer bullets',
+    description:
+      'Convert project experience into STAR-style bullets for ownership, conflict, ambiguity, leadership, technical judgment, and measurable impact.',
+  },
+  {
+    title: 'Private desktop workspace',
+    description:
+      'Keep resume notes, job context, live prompts, and answer drafts in one low-distraction desktop workspace built for remote interviews.',
+  },
+  {
+    title: 'Post-interview report',
+    description:
+      'After practice or interview review, see transcripts, answer scores, missed technical signals, repeated filler words, and next-session drills.',
+  },
+];
+---
+
+<BaseLayout
+  title="InterviewCue AI Interview Coach for Software Careers"
+  description="InterviewCue AI is an AI interview coach for software candidates, combining ATS resume optimization, role-specific mock interviews, and real-time interview cues."
+  schema={[organizationSchema(), websiteSchema(), softwareApplicationSchema()]}
+>
+  <Hero />
+  <PlatformStrip />
+  <ConversionProof />
+  <WorkflowCards />
+  <FeatureGrid
+    eyebrow="Core paid features"
+    title="Everything a technical candidate needs when the interview gets serious."
+    description="The homepage now leads with the features that create urgency: live guidance, technical depth, role context, and a concrete improvement loop."
+    features={features}
+  />
+  <VisualStory />
+  <RoleMatrix />
+  <HomeFAQ />
+  <CTA />
+</BaseLayout>

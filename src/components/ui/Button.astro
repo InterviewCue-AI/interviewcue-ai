@@ -1,0 +1,61 @@
+---
+type Props = {
+  href?: string;
+  variant?: 'primary' | 'secondary' | 'ghost';
+  size?: 'sm' | 'md';
+  trackingEvent?: string;
+  trackingLabel?: string;
+  trackingSection?: string;
+  trackingComponent?: string;
+};
+
+const {
+  href,
+  variant = 'primary',
+  size = 'md',
+  trackingEvent = href ? 'cta_click' : undefined,
+  trackingLabel,
+  trackingSection,
+  trackingComponent = 'button',
+} = Astro.props as Props;
+
+const base =
+  'inline-flex items-center justify-center rounded-full font-semibold transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2';
+const sizes = {
+  sm: 'h-10 px-4 text-sm',
+  md: 'h-12 px-6 text-base',
+};
+const variants = {
+  primary: 'bg-blue-600 text-white shadow-lg shadow-blue-600/20 hover:bg-blue-700',
+  secondary: 'border border-slate-200 bg-white text-slate-950 shadow-lg shadow-slate-950/10 hover:border-blue-200 hover:bg-blue-50',
+  ghost: 'text-slate-700 hover:text-slate-950',
+};
+const className = `${base} ${sizes[size]} ${variants[variant]}`;
+---
+
+{href ? (
+  <a
+    class={className}
+    href={href}
+    data-ga-event={trackingEvent}
+    data-ga-category="cta"
+    data-ga-label={trackingLabel}
+    data-ga-section={trackingSection}
+    data-ga-component={trackingComponent}
+    data-ga-variant={variant}
+  >
+    <slot />
+  </a>
+) : (
+  <button
+    class={className}
+    data-ga-event={trackingEvent}
+    data-ga-category="cta"
+    data-ga-label={trackingLabel}
+    data-ga-section={trackingSection}
+    data-ga-component={trackingComponent}
+    data-ga-variant={variant}
+  >
+    <slot />
+  </button>
+)}

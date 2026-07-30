@@ -1,0 +1,31 @@
+---
+import { roles, interviewTypes } from '../../lib/site';
+---
+
+<section class="bg-slate-50 py-24">
+  <div class="container grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+    <div data-reveal>
+      <p class="text-sm font-black uppercase tracking-widest text-blue-600">Built for the tech hiring loop</p>
+      <h2 class="mt-4 text-4xl font-black tracking-tight text-slate-950 sm:text-5xl">Role-aware practice, not generic interview chat.</h2>
+      <p class="mt-5 text-lg leading-8 text-slate-600">
+        Software interviews combine code clarity, systems thinking, product judgment, communication, and tradeoff reasoning. The content system is structured around that reality.
+      </p>
+    </div>
+    <div class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-xl shadow-slate-950/5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-950/10" data-reveal>
+      <div class="grid gap-6 md:grid-cols-2">
+        <div>
+          <h3 class="text-sm font-black uppercase tracking-widest text-slate-500">Roles</h3>
+          <div class="mt-4 flex flex-wrap gap-2">
+            {roles.map((role) => <span class="rounded-full bg-blue-50 px-3 py-2 text-sm font-bold text-blue-700">{role}</span>)}
+          </div>
+        </div>
+        <div>
+          <h3 class="text-sm font-black uppercase tracking-widest text-slate-500">Interview modes</h3>
+          <div class="mt-4 flex flex-wrap gap-2">
+            {interviewTypes.map((type) => <span class="rounded-full bg-teal-50 px-3 py-2 text-sm font-bold text-teal-700">{type}</span>)}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

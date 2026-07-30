@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">InterviewCue</title>
+  <desc id="desc">Real-time AI interview cues for software careers</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#020617"/>
+      <stop offset=".62" stop-color="#0F172A"/>
+      <stop offset="1" stop-color="#0F766E"/>
+    </linearGradient>
+    <linearGradient id="mark" x1="92" y1="86" x2="194" y2="198" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3B82F6"/>
+      <stop offset=".55" stop-color="#2563EB"/>
+      <stop offset="1" stop-color="#14B8A6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1010" cy="90" r="230" fill="#2563EB" opacity=".26"/>
+  <circle cx="1050" cy="520" r="260" fill="#14B8A6" opacity=".18"/>
+  <rect x="72" y="72" width="1056" height="486" rx="32" fill="#FFFFFF" opacity=".06" stroke="#FFFFFF" stroke-opacity=".16"/>
+  <rect x="112" y="112" width="88" height="88" rx="24" fill="url(#mark)"/>
+  <path d="M130 137c0-7 6-13 13-13h25c7 0 13 6 13 13v27c0 7-6 13-13 13h-13l-15 12c-3 2-6 0-6-3v-10c-3-2-4-6-4-10v-29Z" fill="#fff"/>
+  <path d="M152 145l-9 9 9 9M164 145l9 9-9 9" fill="none" stroke="#2563EB" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M158 142v25" stroke="#14B8A6" stroke-width="5" stroke-linecap="round"/>
+  <path d="M181 122l2 6 6 2-6 2-2 6-2-6-6-2 6-2 2-6Z" fill="#5EEAD4"/>
+  <text x="224" y="148" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="900" fill="#FFFFFF">InterviewCue</text>
+  <text x="224" y="184" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="800" letter-spacing="5" fill="#93C5FD">AI INTERVIEW COPILOT</text>
+  <text x="112" y="308" font-family="Inter, Arial, sans-serif" font-size="72" font-weight="900" fill="#FFFFFF">Real-time AI cues</text>
+  <text x="112" y="390" font-family="Inter, Arial, sans-serif" font-size="72" font-weight="900" fill="#FFFFFF">for technical interviews</text>
+  <text x="116" y="458" font-family="Inter, Arial, sans-serif" font-size="28" fill="#CBD5E1">Coding. System design. Behavioral. Product sense.</text>
+  <rect x="112" y="492" width="270" height="54" rx="27" fill="#2563EB"/>
+  <text x="247" y="527" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="800" fill="#FFFFFF">Start Live Copilot</text>
+</svg>

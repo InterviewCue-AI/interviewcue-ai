@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">InterviewCue</title>
+  <desc id="desc">InterviewCue AI copilot logo</desc>
+  <defs>
+    <linearGradient id="g" x1="18" y1="12" x2="112" y2="120" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3B82F6"/>
+      <stop offset=".58" stop-color="#2563EB"/>
+      <stop offset="1" stop-color="#14B8A6"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="32" fill="url(#g)"/>
+  <path d="M27 32c0-9 7-16 16-16h43c9 0 16 7 16 16v45c0 9-7 16-16 16H64L43 109c-4 3-9 0-9-5V90c-4-3-7-8-7-14V32Z" fill="#fff"/>
+  <path d="M57 46L43 60l14 14M75 46l14 14-14 14" fill="none" stroke="#2563EB" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M66 42v37" stroke="#14B8A6" stroke-width="9" stroke-linecap="round"/>
+  <path d="M98 22l3 8 8 3-8 3-3 8-3-8-8-3 8-3 3-8Z" fill="#5EEAD4"/>
+</svg>

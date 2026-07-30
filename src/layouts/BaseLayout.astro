@@ -1,0 +1,41 @@
+---
+import SEO from '../components/SEO.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ScrollReveal from '../components/ScrollReveal.astro';
+import Analytics from '../components/Analytics.astro';
+import '../styles/global.css';
+import type { SeoProps } from '../lib/seo';
+
+type Props = SeoProps & {
+  schema?: Record<string, unknown> | Array<Record<string, unknown>>;
+};
+
+const { schema, ...seo } = Astro.props as Props;
+const schemas = Array.isArray(schema) ? schema : schema ? [schema] : [];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=3" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png?v=3" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=3" />
+    <link rel="shortcut icon" href="/favicon.ico?v=3" />
+    <SEO {...seo} />
+    <Analytics />
+    {schemas.map((item) => <script type="application/ld+json" set:html={JSON.stringify(item)} />)}
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <ScrollReveal />
+  </body>
+</html>

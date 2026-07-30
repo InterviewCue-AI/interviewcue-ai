@@ -1,0 +1,199 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
+);
+
+const categoryCounts = Object.entries(
+  posts.reduce<Record<string, number>>((counts, post) => {
+    const category = post.data.category;
+    counts[category] = (counts[category] || 0) + 1;
+    return counts;
+  }, {}),
+).sort(([categoryA, countA], [categoryB, countB]) => countB - countA || categoryA.localeCompare(categoryB));
+
+const totalArticles = posts.length;
+const totalTopics = categoryCounts.length;
+---
+
+<BaseLayout
+  title="Technical Interview Blog"
+  description="Guides, frameworks, and interview preparation resources for software and internet-industry careers."
+>
+  <section class="section page-hero">
+    <div class="container">
+      <p class="eyebrow">Blog</p>
+      <h1>Practical technical interview advice for software careers.</h1>
+      <p>Role-specific playbooks for coding interviews, system design loops, behavioral rounds, and live technical interview practice.</p>
+      <div class="blog-summary" aria-label={`${totalArticles} articles across ${totalTopics} topics`}>
+        <span><strong>{totalArticles}</strong> articles</span>
+        <span><strong>{totalTopics}</strong> topics</span>
+      </div>
+      <div class="topic-list" aria-label="Blog topics">
+        {categoryCounts.map(([category, count]) => (
+          <span>{category}<strong>{count}</strong></span>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container post-list">
+      {posts.map((post) => (
+        <a
+          class="card post"
+          href={`/blog/${post.id}/`}
+          data-ga-event="blog_post_click"
+          data-ga-category="content"
+          data-ga-label={post.data.title}
+          data-ga-section="blog_index"
+          data-ga-component="post_card"
+        >
+          {
+            post.data.ogImage && (
+              <img
+                class="post-image"
+                src={post.data.ogImage}
+                alt={post.data.imageAlt || post.data.title}
+                loading="lazy"
+                decoding="async"
+              />
+            )
+          }
+          <span>{post.data.category}</span>
+          <h2>{post.data.title}</h2>
+          <p>{post.data.description}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+  }
+
+  h1 {
+    max-width: 860px;
+    margin: 0;
+    font-size: clamp(2.15rem, 4.2vw, 3.7rem);
+    line-height: 1.05;
+  }
+
+  .page-hero p:not(.eyebrow) {
+    max-width: 720px;
+    color: var(--ink-soft);
+    font-size: 1.15rem;
+  }
+
+  .blog-summary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 22px;
+  }
+
+  .blog-summary span {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    font-weight: 760;
+    padding: 8px 13px;
+  }
+
+  .blog-summary strong {
+    color: var(--brand);
+    font-size: 1.05rem;
+  }
+
+  .topic-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    max-width: 920px;
+    margin-top: 18px;
+  }
+
+  .topic-list span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.72);
+    color: var(--ink-soft);
+    font-size: 0.86rem;
+    font-weight: 740;
+    line-height: 1;
+    padding: 8px 11px;
+    white-space: nowrap;
+  }
+
+  .topic-list strong {
+    display: inline-grid;
+    min-width: 22px;
+    height: 22px;
+    place-items: center;
+    border-radius: 999px;
+    background: var(--surface-muted);
+    color: var(--brand);
+    font-size: 0.78rem;
+  }
+
+  .post-list {
+    display: grid;
+    gap: 16px;
+  }
+
+  .post {
+    display: grid;
+    grid-template-columns: 180px minmax(0, 1fr);
+    gap: 20px;
+    padding: 24px;
+    align-items: center;
+  }
+
+  .post-image {
+    grid-row: span 3;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    border-radius: 8px;
+    background: var(--surface-muted);
+  }
+
+  .post span {
+    color: var(--brand);
+    font-size: 0.82rem;
+    font-weight: 760;
+    text-transform: uppercase;
+  }
+
+  .post h2 {
+    margin: 8px 0;
+    font-size: 1.35rem;
+  }
+
+  .post p {
+    margin: 0;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 680px) {
+    .post {
+      grid-template-columns: 1fr;
+    }
+
+    .post-image {
+      grid-row: auto;
+    }
+  }
+</style>

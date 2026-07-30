@@ -1,0 +1,56 @@
+---
+const measurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
+---
+
+{measurementId && (
+  <>
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}></script>
+    <script is:inline define:vars={{ measurementId }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        window.dataLayer.push(arguments);
+      }
+
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', measurementId, {
+        send_page_view: true,
+      });
+
+      const trackEvent = (name, params = {}) => {
+        if (!window.gtag) return;
+        window.gtag('event', name, {
+          page_location: window.location.href,
+          page_path: window.location.pathname,
+          ...params,
+        });
+      };
+
+      document.addEventListener('click', (event) => {
+        const target = event.target instanceof Element ? event.target.closest('[data-ga-event]') : null;
+        if (!target) return;
+
+        trackEvent(target.dataset.gaEvent, {
+          event_category: target.dataset.gaCategory || 'engagement',
+          event_label: target.dataset.gaLabel || target.textContent?.trim() || target.getAttribute('href') || '',
+          link_url: target.getAttribute('href') || '',
+          section: target.dataset.gaSection || '',
+          component: target.dataset.gaComponent || '',
+          cta_variant: target.dataset.gaVariant || '',
+        });
+      });
+
+      document.addEventListener('submit', (event) => {
+        const target = event.target instanceof Element ? event.target.closest('[data-ga-event]') : null;
+        if (!target) return;
+
+        trackEvent(target.dataset.gaEvent, {
+          event_category: target.dataset.gaCategory || 'lead',
+          event_label: target.dataset.gaLabel || target.getAttribute('name') || '',
+          section: target.dataset.gaSection || '',
+          component: target.dataset.gaComponent || '',
+        });
+      });
+    </script>
+  </>
+)}

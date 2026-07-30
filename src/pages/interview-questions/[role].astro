@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTA from '../../components/sections/CTA.astro';
+
+export function getStaticPaths() {
+  const rolePages = [
+    {
+      role: 'software-engineer',
+      title: 'Software Engineer Interview Questions',
+      label: 'Software Engineer',
+      focus: ['Coding fundamentals', 'System design', 'Debugging', 'Behavioral stories'],
+    },
+    {
+      role: 'frontend-engineer',
+      title: 'Frontend Engineer Interview Questions',
+      label: 'Frontend Engineer',
+      focus: ['Browser fundamentals', 'UI architecture', 'Performance', 'Accessibility'],
+    },
+    {
+      role: 'backend-engineer',
+      title: 'Backend Engineer Interview Questions',
+      label: 'Backend Engineer',
+      focus: ['APIs', 'Databases', 'Distributed systems', 'Reliability'],
+    },
+    {
+      role: 'product-manager',
+      title: 'Product Manager Interview Questions',
+      label: 'Product Manager',
+      focus: ['Product sense', 'Execution', 'Metrics', 'Technical collaboration'],
+    },
+    {
+      role: 'data-engineer',
+      title: 'Data Engineer Interview Questions',
+      label: 'Data Engineer',
+      focus: ['Pipelines', 'Warehouses', 'Streaming', 'Data quality'],
+    },
+    {
+      role: 'machine-learning-engineer',
+      title: 'Machine Learning Engineer Interview Questions',
+      label: 'Machine Learning Engineer',
+      focus: ['ML systems', 'Evaluation', 'Deployment', 'Product impact'],
+    },
+  ];
+
+  return rolePages.map((page) => ({
+    params: { role: page.role },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props;
+---
+
+<BaseLayout
+  title={page.title}
+  description={`Practice ${page.label.toLowerCase()} interview questions for software and internet-industry hiring loops.`}
+>
+  <section class="section page-hero">
+    <div class="container">
+      <p class="eyebrow">Role hub</p>
+      <h1>{page.title}</h1>
+      <p>Practice the question categories that matter most for {page.label.toLowerCase()} candidates, then use InterviewCue to rehearse answer structure, follow-up pressure, and clearer technical communication.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container grid two">
+      {page.focus.map((item: string) => (
+        <article class="card focus">
+          <h2>{item}</h2>
+          <p>Question sets, answer frameworks, and coaching prompts for {page.label.toLowerCase()} candidates.</p>
+        </article>
+      ))}
+    </div>
+  </section>
+  <CTA />
+</BaseLayout>
+
+<style>
+  .page-hero {
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+  }
+
+  h1 {
+    max-width: 860px;
+    margin: 0;
+    font-size: clamp(2.15rem, 4.2vw, 3.7rem);
+    line-height: 1.05;
+  }
+
+  .page-hero p:not(.eyebrow) {
+    max-width: 720px;
+    color: var(--ink-soft);
+    font-size: 1.15rem;
+  }
+
+  .focus {
+    padding: 24px;
+  }
+
+  .focus h2 {
+    margin: 0 0 10px;
+    font-size: 1.2rem;
+  }
+
+  .focus p {
+    margin: 0;
+    color: var(--ink-soft);
+  }
+</style>

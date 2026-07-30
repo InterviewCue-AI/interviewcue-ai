@@ -1,0 +1,81 @@
+---
+import { site } from '../lib/site';
+import BrandMark from './ui/BrandMark.astro';
+
+const columns = [
+  {
+    title: 'Product',
+    links: [
+      { label: 'Live Interview Copilot', href: '/ai-interview-copilot/' },
+      { label: 'AI Mock Interview', href: '/ai-mock-interview/' },
+      { label: 'Interview Questions', href: '/interview-questions/' },
+      { label: 'STAR Answer Generator', href: '/tools/star-answer-generator/' },
+    ],
+  },
+  {
+    title: 'Resources',
+    links: [
+      { label: 'Blog', href: '/blog/' },
+      { label: 'Guides', href: '/guides/' },
+      { label: 'Alternatives', href: '/alternatives/' },
+    ],
+  },
+  {
+    title: 'Company',
+    links: [
+      { label: 'About', href: '/about/' },
+      { label: 'Contact', href: '/contact/' },
+      { label: site.contact.email, href: `mailto:${site.contact.email}` },
+      { label: 'Privacy', href: '/privacy/' },
+      { label: 'Terms', href: '/terms/' },
+    ],
+  },
+];
+---
+
+<footer class="border-t border-white/10 bg-slate-950 text-white">
+  <div class="container grid gap-10 py-14 lg:grid-cols-[1.25fr_2fr]">
+    <div>
+      <a
+        href="/"
+        aria-label={`${site.name} home`}
+        data-ga-event="nav_click"
+        data-ga-category="navigation"
+        data-ga-label="footer_brand_home"
+        data-ga-section="footer"
+        data-ga-component="brand"
+      >
+        <BrandMark tone="dark" />
+      </a>
+      <p class="mt-5 max-w-sm text-sm leading-6 text-slate-400">
+        InterviewCue AI, often shortened to InterviewCue, helps software candidates prepare with ATS resume optimization, AI mock interviews, and real-time interview cues.
+      </p>
+    </div>
+    <div class="grid gap-8 sm:grid-cols-3">
+      {columns.map((column) => (
+        <div>
+          <h2 class="text-sm font-black uppercase tracking-widest text-slate-300">{column.title}</h2>
+          <div class="mt-4 grid gap-3">
+            {column.links.map((link) => (
+              <a
+                class="text-sm font-medium text-slate-400 transition hover:text-white"
+                href={link.href}
+                data-ga-event="footer_link_click"
+                data-ga-category="navigation"
+                data-ga-label={link.label}
+                data-ga-section="footer"
+                data-ga-component={column.title}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+  <div class="container flex flex-col gap-3 border-t border-white/10 py-6 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+    <span>Copyright {new Date().getFullYear()} {site.name}. All rights reserved.</span>
+    <span>Built for software and internet-industry interview workflows.</span>
+  </div>
+</footer>

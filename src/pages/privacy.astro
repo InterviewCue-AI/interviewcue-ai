@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../lib/site';
+---
+
+<BaseLayout title="Privacy Policy" description="InterviewCue privacy policy for product users and website visitors." noindex={true}>
+  <section class="section">
+    <div class="container prose">
+      <p class="eyebrow">Legal</p>
+      <h1>Privacy Policy</h1>
+      <p>Effective date: June 16, 2026.</p>
+      <p>InterviewCue provides interview preparation, coaching, and product workflows for software and internet-industry candidates. This policy explains what information we collect and how we use it.</p>
+      <h2>Information we collect</h2>
+      <p>We collect information you submit through product, contact, or legacy waitlist workflows, such as email address, target role, interview goals, source page, and related messages. We may also collect basic analytics data such as page views, referral source, device information, browser information, and interaction events.</p>
+      <h2>How we use information</h2>
+      <p>We use information to operate the product, respond to requests, improve product and content quality, measure site performance, prevent abuse, and understand which interview preparation topics are most useful to candidates.</p>
+      <h2>Analytics and service providers</h2>
+      <p>We use Google Analytics to understand traffic and product interest. We may also use service providers such as hosting, analytics, automation, and spreadsheet tools to operate the site and process user submissions.</p>
+      <h2>Sharing</h2>
+      <p>We do not sell personal information. We may share information with service providers that help us operate InterviewCue, when required by law, or when needed to protect the security and integrity of the service.</p>
+      <h2>Retention</h2>
+      <p>We keep product, contact, and communication records for as long as needed to operate InterviewCue, improve the product, and maintain reasonable business records. You can ask us to remove your submitted information.</p>
+      <h2>Your choices</h2>
+      <p>You can choose not to submit optional forms. You can also use browser or device settings to limit cookies and analytics where available.</p>
+      <h2>Security</h2>
+      <p>We use reasonable safeguards for the information we collect, but no internet service can guarantee perfect security.</p>
+      <h2>Children</h2>
+      <p>InterviewCue is intended for professional and career preparation use. It is not directed to children under 13.</p>
+      <h2>Contact</h2>
+      <p>For privacy questions or data requests, email <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a> or use the <a href="/contact/">contact page</a>.</p>
+    </div>
+  </section>
+</BaseLayout>

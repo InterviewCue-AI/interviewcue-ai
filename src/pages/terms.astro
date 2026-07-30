@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../lib/site';
+---
+
+<BaseLayout title="Terms of Service" description="InterviewCue terms of service for product users and website visitors." noindex={true}>
+  <section class="section">
+    <div class="container prose">
+      <p class="eyebrow">Legal</p>
+      <h1>Terms of Service</h1>
+      <p>Effective date: June 16, 2026.</p>
+      <p>These terms govern your use of InterviewCue, including the website, free tools, interview preparation content, and product workflows.</p>
+      <h2>Use of the service</h2>
+      <p>InterviewCue is intended for interview preparation, coaching, and practice workflows for technical candidates.</p>
+      <h2>Interview integrity</h2>
+      <p>You are responsible for following the rules of any interview, employer, school, platform, or assessment provider. Do not use InterviewCue in a live interview or assessment where outside assistance is prohibited.</p>
+      <h2>Product access</h2>
+      <p>Product features may change, pause, or become unavailable as we improve InterviewCue. Access, availability, pricing, and specific product features may vary by environment, plan, or release stage.</p>
+      <h2>Acceptable use</h2>
+      <p>Do not misuse the site, attempt to disrupt the service, submit unlawful content, reverse engineer private systems, or use InterviewCue to deceive employers or assessment providers.</p>
+      <h2>Content and feedback</h2>
+      <p>You retain responsibility for the information you submit. If you provide feedback, suggestions, or product ideas, we may use them to improve InterviewCue without obligation to compensate you.</p>
+      <h2>No guarantees</h2>
+      <p>The service does not guarantee job offers, interview outcomes, or employer decisions.</p>
+      <h2>Changes to these terms</h2>
+      <p>We may update these terms as InterviewCue evolves. The latest version will be posted on this page.</p>
+      <h2>Contact</h2>
+      <p>Questions about these terms can be sent to <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a> or through the <a href="/contact/">contact page</a>.</p>
+    </div>
+  </section>
+</BaseLayout>

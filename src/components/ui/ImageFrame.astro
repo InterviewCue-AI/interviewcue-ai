@@ -1,0 +1,20 @@
+---
+type Props = {
+  src: string;
+  alt: string;
+  credit?: string;
+  href?: string;
+  ratio?: 'wide' | 'square' | 'tall';
+};
+
+const { src, alt, ratio = 'wide' } = Astro.props as Props;
+const ratioClass = {
+  wide: 'aspect-[16/10]',
+  square: 'aspect-square',
+  tall: 'aspect-[4/5]',
+}[ratio];
+---
+
+<figure class={`overflow-hidden rounded-3xl border border-slate-200 bg-slate-100 shadow-xl shadow-slate-950/10 ${ratioClass}`}>
+  <img class="h-full w-full object-cover" src={src} alt={alt} loading="lazy" decoding="async" />
+</figure>

@@ -1,0 +1,50 @@
+---
+import { site } from '../lib/site';
+import Button from './ui/Button.astro';
+import BrandMark from './ui/BrandMark.astro';
+---
+
+<header class="sticky top-0 z-50 border-b border-slate-200/80 bg-white/85 backdrop-blur-xl">
+  <div class="container flex min-h-16 items-center justify-between gap-6">
+    <a
+      href="/"
+      aria-label={`${site.name} home`}
+      data-ga-event="nav_click"
+      data-ga-category="navigation"
+      data-ga-label="brand_home"
+      data-ga-section="header"
+      data-ga-component="brand"
+    >
+      <BrandMark />
+    </a>
+    <nav class="hidden items-center gap-7 text-sm font-semibold text-slate-600 md:flex" aria-label="Primary navigation">
+      {site.nav.map((item) => (
+        <a
+          class="hover:text-slate-950"
+          href={item.href}
+          data-ga-event="nav_click"
+          data-ga-category="navigation"
+          data-ga-label={item.label}
+          data-ga-section="header"
+          data-ga-component="primary_nav"
+        >
+          {item.label}
+        </a>
+      ))}
+      <a
+        class="hover:text-slate-950"
+        href="/pricing/"
+        data-ga-event="nav_click"
+        data-ga-category="navigation"
+        data-ga-label="Pricing"
+        data-ga-section="header"
+        data-ga-component="primary_nav"
+      >
+        Pricing
+      </a>
+    </nav>
+    <Button href={site.cta.href} size="sm" trackingLabel={`header_${site.cta.trackingKey}`} trackingSection="header">
+      {site.cta.label}
+    </Button>
+  </div>
+</header>
