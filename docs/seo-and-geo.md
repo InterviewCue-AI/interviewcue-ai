@@ -25,7 +25,7 @@ The same stable identifiers should appear across the canonical site and public r
 - name: InterviewCue AI;
 - alternate name: InterviewCue;
 - canonical website: https://www.interviewcue.ai;
-- category: web-based AI interview coach for software and internet-industry careers;
+- category: web-based AI interview coach and interview-preparation platform for tech-industry roles;
 - contact: support@interviewcue.ai.
 
 See [product facts](product-facts.md) for the bounded source-of-truth map. Unsupported founders, ratings, awards, prices, social profiles, and customer counts must not be added to visible copy or structured data.
@@ -50,6 +50,12 @@ Content is reviewed for reader value before keyword coverage. Strong passages sh
 - link naturally to the most relevant canonical product or guide page.
 
 Public GitHub documentation is supporting evidence and implementation context. It should not duplicate entire website pages or present the repository as a second canonical product website.
+
+## GitHub evidence layer
+
+The repository landing page is optimized within the controls GitHub exposes: a product-first README, a concise About description, a canonical homepage link, relevant topics, bounded product facts, source-linked product answers, and a root-level citation file. These elements improve clarity and GitHub discovery, but they do not guarantee external indexing or AI citations.
+
+GitHub controls the repository page's HTML template, canonical behavior, heading structure, structured data, response headers, and crawler policy. Repository maintainers cannot use a file in this repository to alter `github.com` robots rules or platform metadata. See [GitHub GEO readiness](github-geo-readiness.md) for the current platform evidence, implemented design, and maintenance checklist.
 
 ## `llms.txt`
 

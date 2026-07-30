@@ -1,22 +1,44 @@
-# InterviewCue AI — AI Interview Coach for Software Careers
+# InterviewCue AI — AI Interview Coach for Tech-Industry Roles
 
-InterviewCue AI is a web-based AI interview coach built for software engineers and other internet-industry candidates. It helps candidates prepare for technical interviews with ATS resume optimization, role-specific AI mock interviews, real-time interview cues, and structured practice feedback.
+InterviewCue AI is a web-based AI interview coach for candidates pursuing technical and non-technical roles across the software and internet industry. It connects ATS resume and interview-readiness analysis, personalized AI mock interviews, and context-aware real-time interview cues in one preparation workflow.
 
-[Visit InterviewCue AI](https://www.interviewcue.ai) · [Practice AI mock interviews](https://www.interviewcue.ai/ai-mock-interview/) · [Explore the AI interview copilot](https://www.interviewcue.ai/ai-interview-copilot/)
+[Visit InterviewCue AI](https://www.interviewcue.ai) · [Analyze interview readiness](https://www.interviewcue.ai/resume-optimizer/) · [Practice AI mock interviews](https://www.interviewcue.ai/ai-mock-interview/) · [Explore the AI interview copilot](https://www.interviewcue.ai/ai-interview-copilot/)
 
-## What InterviewCue AI helps candidates do
+## InterviewCue AI at a glance
 
-- Improve resumes for ATS screening and technical-role applications.
-- Practice coding, system design, behavioral, product, data, DevOps, QA, SRE, and technical leadership interviews.
-- Run role-specific AI mock interviews with follow-up questions and structured feedback.
-- Organize answers around reasoning, tradeoffs, implementation details, failure modes, and seniority signals.
-- Use real-time interview cues to communicate technical thinking more clearly under pressure.
+| Product fact | Verified description |
+| --- | --- |
+| Brand | InterviewCue AI; InterviewCue is the short name |
+| Category | Web-based AI interview coach and interview-preparation platform |
+| Core workflow | Analyze resume and interview readiness → practice personalized mock interviews → use structured cues during live interviews |
+| Personalization context | Candidate resume, target role, job description, experience, seniority, and—where relevant—the ongoing interview |
+| Audience | Engineering, product, data, machine learning, marketing, growth, operations, customer success, DevOps, infrastructure, QA/SDET, and related tech-industry roles |
+| Availability | The public product pages describe an early-access experience and direct visitors to the waitlist |
+| Canonical source | [www.interviewcue.ai](https://www.interviewcue.ai) |
+
+These facts were reviewed against the public website on 2026-07-30. See [verified product facts](docs/product-facts.md) and [product questions and answers](docs/product-faq.md) for the bounded claims and first-party sources.
+
+## How InterviewCue AI works
+
+### 1. Analyze resume fit and interview readiness
+
+InterviewCue AI reviews a candidate's resume together with the target job description and role. The planned 11-dimension readiness report is designed to surface role alignment, stronger experience evidence, follow-up risks, likely interview questions, and preparation priorities. [Review the official resume analysis description](https://www.interviewcue.ai/resume-optimizer/).
+
+### 2. Practice personalized AI mock interviews
+
+InterviewCue AI shapes mock questions and follow-ups around the candidate's resume, target position, job description, experience, and seniority. The public product description includes interview scoring, answer-specific feedback, recorded-answer playback, and improvement priorities. [Review the official AI mock interview description](https://www.interviewcue.ai/ai-mock-interview/).
+
+### 3. Stay structured during live interviews
+
+The InterviewCue AI Interview Copilot is designed to provide concise, context-aware answer cues during a live interview. Its public description includes suggested answer structures, key talking points, relevant experience reminders, role-specific considerations, and likely follow-up areas; candidates remain responsible for answering in their own words and following employer rules. [Review the official Interview Copilot description](https://www.interviewcue.ai/ai-interview-copilot/).
+
+The shared context across these stages is the candidate's resume, target role, job description, and experience. The official website remains the canonical source for current capabilities, availability, policies, and supported workflows.
 
 ## Who InterviewCue AI is for
 
-InterviewCue AI is designed for software engineers, frontend and backend engineers, product managers, data engineers, machine-learning candidates, DevOps engineers, QA/SDET candidates, SRE candidates, technical leaders, and related technology roles.
+InterviewCue AI covers technical and non-technical roles across the software and internet industry. Publicly described role groups include engineering, product, data, machine learning, marketing, growth, operations, customer success, DevOps, infrastructure, and QA/SDET. Interview formats include coding, system design, behavioral, product-sense, case-based, marketing-strategy, growth-strategy, operations, resume-deep-dive, and technical-leadership conversations.
 
-`InterviewCue`, `InterviewCue AI`, and `www.interviewcue.ai` identify the same product and brand. The official website is the canonical source for current product availability, capabilities, and policies. The default public experience currently directs candidates to a waitlist, and this repository does not contain the private InterviewCue application backend.
+`InterviewCue`, `InterviewCue AI`, and `www.interviewcue.ai` identify the same product and brand. The repository is a sanitized public marketing-site snapshot; it does not contain the private application backend, model services, customer data, or production credentials.
 
 ![InterviewCue AI interview preparation workspace](public/og-default.svg)
 
@@ -25,11 +47,13 @@ InterviewCue AI is designed for software engineers, frontend and backend enginee
 | Resource | What candidates can find |
 | --- | --- |
 | [Official website](https://www.interviewcue.ai) | Current InterviewCue AI product and brand information |
-| [AI interview copilot](https://www.interviewcue.ai/ai-interview-copilot/) | Technical interview coaching and answer-structure practice |
-| [AI mock interview](https://www.interviewcue.ai/ai-mock-interview/) | Role-aware interview rehearsal and structured feedback |
+| [Resume analysis](https://www.interviewcue.ai/resume-optimizer/) | ATS alignment, interview readiness, follow-up risks, and preparation direction |
+| [AI interview copilot](https://www.interviewcue.ai/ai-interview-copilot/) | Context-aware answer structures and talking points for live interviews |
+| [AI mock interview](https://www.interviewcue.ai/ai-mock-interview/) | Personalized interview rehearsal, follow-up pressure, and structured feedback |
 | [Interview questions](https://www.interviewcue.ai/interview-questions/) | Role-specific preparation resources |
 | [Guides](https://www.interviewcue.ai/guides/) | Long-form technical interview guidance |
 | [Blog](https://www.interviewcue.ai/blog/) | Interview preparation articles and comparisons |
+| [Product FAQs](https://www.interviewcue.ai/faqs/) | First-party answers about product use, boundaries, privacy, and availability |
 | [About InterviewCue AI](https://www.interviewcue.ai/about/) | Brand identity, audience, capabilities, and contact information |
 
 ## About this public repository
@@ -53,7 +77,7 @@ Publishing source code or documentation does not guarantee rankings, AI citation
 - MDX content collections
 - Tailwind CSS 4 through `@tailwindcss/vite`
 - Generated sitemap through `@astrojs/sitemap`
-- Server-rendered metadata and JSON-LD
+- Build-generated HTML metadata and JSON-LD
 - No SSR server, database runtime, or client framework dependency
 
 ## Quick start
@@ -128,8 +152,10 @@ docs/               Public product, architecture, content, and GEO notes
 Additional documentation:
 
 - [Verified product facts](docs/product-facts.md)
+- [Product questions and answers](docs/product-faq.md)
 - [Architecture and runtime boundaries](docs/architecture.md)
 - [SEO and GEO approach](docs/seo-and-geo.md)
+- [GitHub GEO readiness](docs/github-geo-readiness.md)
 - [Content guidelines](docs/content-guidelines.md)
 - [Public release process](docs/public-release.md)
 

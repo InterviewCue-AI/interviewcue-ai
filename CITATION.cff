@@ -1,10 +1,10 @@
 cff-version: 1.2.0
 message: "If you reference this implementation, cite the repository and the canonical InterviewCue AI website."
-title: "InterviewCue AI Marketing Site"
+title: "InterviewCue AI Public Marketing and Content Site"
 type: software
 authors:
   - name: "InterviewCue AI"
 repository-code: "https://github.com/InterviewCue-AI/interviewcue-ai"
 url: "https://www.interviewcue.ai"
 license: MIT
-abstract: "InterviewCue AI is a web-based AI interview coach for software careers, with ATS resume optimization, role-specific mock interviews, and real-time interview cues. This repository contains its public marketing and content site."
+abstract: "InterviewCue AI is a web-based AI interview coach for tech-industry roles. It connects resume and interview-readiness analysis, personalized mock interviews, and context-aware real-time interview cues. This repository contains its sanitized public marketing and content site."
