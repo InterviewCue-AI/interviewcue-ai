@@ -1,30 +1,30 @@
-# InterviewCue AI
+# InterviewCue AI — AI Interview Coach for Software Careers
 
-Public source code for the static marketing and content site at [www.interviewcue.ai](https://www.interviewcue.ai).
+InterviewCue AI is a web-based AI interview coach built for software engineers and other internet-industry candidates. It helps candidates prepare for technical interviews with ATS resume optimization, role-specific AI mock interviews, real-time interview cues, and structured practice feedback.
 
-![InterviewCue AI social preview](public/og-default.svg)
+[Visit InterviewCue AI](https://www.interviewcue.ai) · [Practice AI mock interviews](https://www.interviewcue.ai/ai-mock-interview/) · [Explore the AI interview copilot](https://www.interviewcue.ai/ai-interview-copilot/)
 
-InterviewCue AI is a web-based AI interview coach for software and internet-industry candidates. The public site describes three core product directions: ATS resume optimization, role-specific mock interviews, and real-time interview cues.
+## What InterviewCue AI helps candidates do
 
-`InterviewCue`, `InterviewCue AI`, and `www.interviewcue.ai` refer to the same product and brand. The live website is the canonical source for current product availability, claims, and policies.
+- Improve resumes for ATS screening and technical-role applications.
+- Practice coding, system design, behavioral, product, data, DevOps, QA, SRE, and technical leadership interviews.
+- Run role-specific AI mock interviews with follow-up questions and structured feedback.
+- Organize answers around reasoning, tradeoffs, implementation details, failure modes, and seniority signals.
+- Use real-time interview cues to communicate technical thinking more clearly under pressure.
 
-## Why this repository is public
+## Who InterviewCue AI is for
 
-This repository makes the marketing site's implementation, content model, and search-readiness practices inspectable. It is intended to provide:
+InterviewCue AI is designed for software engineers, frontend and backend engineers, product managers, data engineers, machine-learning candidates, DevOps engineers, QA/SDET candidates, SRE candidates, technical leaders, and related technology roles.
 
-- a reproducible Astro static-site build;
-- a transparent map between public product statements and their source files;
-- examples of metadata, canonical URLs, structured data, sitemap, and robots output;
-- an evidence-oriented content workflow for SEO and generative engine optimization (GEO);
-- a safe public mirror that contains no product backend, customer data, private analytics configuration, or live credentials.
+`InterviewCue`, `InterviewCue AI`, and `www.interviewcue.ai` identify the same product and brand. The official website is the canonical source for current product availability, capabilities, and policies. The default public experience currently directs candidates to a waitlist, and this repository does not contain the private InterviewCue application backend.
 
-Publishing source code or documentation does not guarantee rankings, AI citations, or recommendations. Actual visibility depends on the live site's accessibility, content usefulness, independent evidence, platform behavior, and measured user outcomes.
+![InterviewCue AI interview preparation workspace](public/og-default.svg)
 
-## Public product surfaces
+## Official InterviewCue AI resources
 
-| Surface | Purpose |
+| Resource | What candidates can find |
 | --- | --- |
-| [Official website](https://www.interviewcue.ai) | Canonical product and brand source |
+| [Official website](https://www.interviewcue.ai) | Current InterviewCue AI product and brand information |
 | [AI interview copilot](https://www.interviewcue.ai/ai-interview-copilot/) | Technical interview coaching and answer-structure practice |
 | [AI mock interview](https://www.interviewcue.ai/ai-mock-interview/) | Role-aware interview rehearsal and structured feedback |
 | [Interview questions](https://www.interviewcue.ai/interview-questions/) | Role-specific preparation resources |
@@ -32,7 +32,19 @@ Publishing source code or documentation does not guarantee rankings, AI citation
 | [Blog](https://www.interviewcue.ai/blog/) | Interview preparation articles and comparisons |
 | [About InterviewCue AI](https://www.interviewcue.ai/about/) | Brand identity, audience, capabilities, and contact information |
 
-The default public build currently routes its primary call to action to a waitlist. This repository does not include the InterviewCue application backend.
+## About this public repository
+
+This repository contains the public marketing and interview-preparation content site for InterviewCue AI. It makes the product's public information architecture, content model, and search-readiness practices inspectable while excluding private application code, customer data, production credentials, internal analytics, and live service configuration.
+
+It provides:
+
+- a reproducible static build of the public InterviewCue AI website;
+- a transparent map between product statements and their source files;
+- public interview-preparation articles, guides, role pages, and product explanations;
+- metadata, canonical URLs, structured data, sitemap, and robots implementations;
+- an evidence-oriented content workflow for SEO and generative engine optimization (GEO).
+
+Publishing source code or documentation does not guarantee rankings, AI citations, or recommendations. Actual visibility depends on the live site's accessibility, content usefulness, independent evidence, platform behavior, and measured user outcomes.
 
 ## Technology
 

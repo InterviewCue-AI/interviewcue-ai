@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "private": true,
-  "description": "Public static marketing and GEO reference site for InterviewCue AI.",
+  "description": "InterviewCue AI is an AI interview coach for software careers with ATS resume optimization, role-specific mock interviews, and real-time interview cues.",
   "license": "SEE LICENSE IN LICENSE.md",
   "repository": {
     "type": "git",
