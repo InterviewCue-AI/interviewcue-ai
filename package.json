@@ -27,10 +27,10 @@
     "audit:articles:report": "node scripts/audit-articles.mjs --write"
   },
   "dependencies": {
-    "@astrojs/mdx": "^6.0.3",
+    "@astrojs/mdx": "^8.0.1",
     "@astrojs/sitemap": "^3.7.3",
     "@tailwindcss/vite": "^4.3.0",
-    "astro": "^6.4.5",
+    "astro": "^7.3.2",
     "tailwindcss": "^4.3.0"
   }
 }
